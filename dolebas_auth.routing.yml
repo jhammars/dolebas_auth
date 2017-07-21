@@ -1,0 +1,15 @@
+dolebas_auth.auth_redirect:
+  path: '/dolebas_auth/{path}'
+  defaults:
+    _controller: '\Drupal\dolebas_auth\Controller\RedirectController::auth_redirect'
+    _title: 'Redirect'
+  requirements:
+    _permission: 'access content'
+
+dolebas_auth.settings_form:
+  path: '/admin/config/dolebas_auth'
+  defaults:
+    _form: '\Drupal\dolebas_auth\Form\RequireLoginSettingsForm'
+    _title: 'Require Login Settings Form'
+  requirements:
+    _permission: 'administer site configuration'
