@@ -19,7 +19,7 @@ class RedirectController extends ControllerBase {
     
     // Temporary solution to prevent infinity redirection after auth user sign out
     // Makes anonymous access really slow
-    drupal_flush_all_caches();
+    // drupal_flush_all_caches();
     
     // If current user is not anonymous, redirect to previous page
     //$previous_url= \Drupal::request()->server->get('HTTP_REFERER');
