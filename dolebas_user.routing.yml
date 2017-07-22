@@ -5,11 +5,3 @@ dolebas_user.auth_redirect:
     _title: 'Redirect'
   requirements:
     _permission: 'access content'
-
-dolebas_user.settings_form:
-  path: '/admin/config/dolebas_user'
-  defaults:
-    _form: '\Drupal\dolebas_user\Form\RequireLoginSettingsForm'
-    _title: 'Require Login Settings Form'
-  requirements:
-    _permission: 'administer site configuration'

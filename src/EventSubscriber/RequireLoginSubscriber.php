@@ -26,6 +26,15 @@ class RequireLoginSubscriber implements EventSubscriberInterface {
    *   Returns TRUE if user is authenticated and FALSE otherwise.
    */
   public function checkUserAuth($config, $route_name) {
+    
+    // Set config values.
+    \Drupal::service('config.factory')->getEditable('require_login.config')->setData(array(
+        'deny_message' => '',
+        'excluded_paths' => '/dolebas_user/*',
+        'auth_path' => '/dolebas_user'
+    ))
+    ->save();
+    
     $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $path = \Drupal::service('path.current')->getPath();
     $path = trim(\Drupal::service('path.alias_manager')->getAliasByPath($path, $lang));
