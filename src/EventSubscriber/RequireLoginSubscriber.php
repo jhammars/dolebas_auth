@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\dolebas_auth\EventSubscriber;
+namespace Drupal\dolebas_user\EventSubscriber;
 
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

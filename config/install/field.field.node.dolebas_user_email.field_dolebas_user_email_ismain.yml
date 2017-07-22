@@ -1,0 +1,26 @@
+uuid: c8ae40fd-d7f9-4892-a7f1-184e07e9dcaf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dolebas_user_email_ismain
+    - node.type.dolebas_user_email
+  enforced:
+    module:
+      - dolebas_user    
+id: node.dolebas_user_email.field_dolebas_user_email_ismain
+field_name: field_dolebas_user_email_ismain
+entity_type: node
+bundle: dolebas_user_email
+label: 'Dolebas User Email IsMain'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\dolebas_auth\Form;
+namespace Drupal\dolebas_user\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;

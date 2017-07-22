@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - dolebas_user
+id: dolebas_unverified
+label: 'Dolebas unverified'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'use exclude node title'
+  - 'create dolebas_transaction content'
+  

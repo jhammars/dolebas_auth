@@ -1,0 +1,31 @@
+uuid: 34052631-fef1-46fa-9077-fe4566816919
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dolebas_user_reference
+    - node.type.dolebas_user_email
+  enforced:
+    module:
+      - dolebas_user    
+id: node.dolebas_user_email.field_dolebas_user_reference
+field_name: field_dolebas_user_reference
+entity_type: node
+bundle: dolebas_user_email
+label: 'Dolebas User Reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: false
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

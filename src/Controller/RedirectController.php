@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\dolebas_auth\Controller;
+namespace Drupal\dolebas_user\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -40,6 +40,7 @@ class RedirectController extends ControllerBase {
     $user->enforceIsNew();
     $user->setEmail('mail@example.com');
     $user->setUsername($username);
+    $user->addRole('dolebas_unverified');
     $user->activate();
     $user->save();
     user_login_finalize($user);

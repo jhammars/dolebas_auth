@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - dolebas_user
+id: dolebas_verified    
+label: 'Dolebas verified'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'use exclude node title'

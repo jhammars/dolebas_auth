@@ -1,5 +1,0 @@
-name: Dolebas Authentication
-type: module
-description: Takes care of authentication
-core: 8.x
-package: Dolebas

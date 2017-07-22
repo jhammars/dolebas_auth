@@ -1,2 +1,2 @@
-# dolebas_auth
+# dolebas_user
 Takes care of authentication
