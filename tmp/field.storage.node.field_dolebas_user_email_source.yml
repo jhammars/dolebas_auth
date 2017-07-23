@@ -1,19 +1,19 @@
-uuid: ef95a6b3-72b1-4248-b2e6-a914f1d623be
 langcode: en
 status: true
 dependencies:
   module:
     - node
-    - user
   enforced:
     module:
-      - dolebas_user
-id: node.field_dolebas_user_reference
-field_name: field_dolebas_user_reference
+      - dolebas_user    
+id: node.field_dolebas_user_email_source
+field_name: field_dolebas_user_email_source
 entity_type: node
-type: entity_reference
+type: string
 settings:
-  target_type: user
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1

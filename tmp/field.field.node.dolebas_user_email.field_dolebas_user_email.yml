@@ -1,10 +1,12 @@
-uuid: 71fe0f72-dbb9-42fe-9bf9-212ee4d2bdae
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_dolebas_user_email
     - node.type.dolebas_user_email
+  # enforced:
+  #   module:
+  #     - dolebas_user    
 id: node.dolebas_user_email.field_dolebas_user_email
 field_name: field_dolebas_user_email
 entity_type: node

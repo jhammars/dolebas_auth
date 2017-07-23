@@ -38,7 +38,6 @@ class RedirectController extends ControllerBase {
     $user = \Drupal\user\Entity\User::create();
     $user->setPassword($pass);
     $user->enforceIsNew();
-    $user->setEmail('mail@example.com');
     $user->setUsername($username);
     $user->addRole('dolebas_unverified');
     $user->activate();

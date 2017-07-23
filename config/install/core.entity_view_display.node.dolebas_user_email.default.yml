@@ -1,0 +1,43 @@
+uuid: 9a77f940-3cd1-4a6e-bcad-0060c9e28e6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dolebas_user_email.field_dolebas_user_action
+    - field.field.node.dolebas_user_email.field_dolebas_user_email
+    - field.field.node.dolebas_user_email.field_dolebas_user_email_source
+    - node.type.dolebas_user_email
+  module:
+    - dolebas_user
+    - user
+id: node.dolebas_user_email.default
+targetEntityType: node
+bundle: dolebas_user_email
+mode: default
+content:
+  field_dolebas_user_action:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: dolebas_user_formatter_type
+    region: content
+  field_dolebas_user_email:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_dolebas_user_email_source:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

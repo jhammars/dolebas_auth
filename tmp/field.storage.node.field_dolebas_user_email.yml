@@ -1,9 +1,11 @@
-uuid: 7262da32-c6ab-4b28-bedc-d46e038a19ad
 langcode: en
 status: true
 dependencies:
   module:
     - node
+  # enforced:
+  #   module:
+  #     - dolebas_user    
 id: node.field_dolebas_user_email
 field_name: field_dolebas_user_email
 entity_type: node

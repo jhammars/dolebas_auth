@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Cleans up config entities installed by this module.
+ */
+function dolebas_user_uninstall() {
+
+  // Delete dolebas_user_email content type
+  if ( $entity = \Drupal::entityTypeManager()->getStorage('node_type')->load('dolebas_user_email') ) {
+    $entity = \Drupal::entityTypeManager()
+      ->getStorage('node_type')
+      ->load('dolebas_user_email');
+    $entity->delete();
+  }
+
+  field_purge_batch(100);
+
+}

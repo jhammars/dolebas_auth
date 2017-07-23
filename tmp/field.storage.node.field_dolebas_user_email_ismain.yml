@@ -1,13 +1,15 @@
-uuid: 7262da32-c6ab-4b28-bedc-d46e038a19ad
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_dolebas_user_email
-field_name: field_dolebas_user_email
+  enforced:
+    module:
+      - dolebas_user    
+id: node.field_dolebas_user_email_ismain
+field_name: field_dolebas_user_email_ismain
 entity_type: node
-type: email
+type: boolean
 settings: {  }
 module: core
 locked: false

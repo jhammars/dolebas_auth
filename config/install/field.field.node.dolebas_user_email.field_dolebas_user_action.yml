@@ -1,0 +1,23 @@
+uuid: 64a34784-889e-48d1-9cc4-03772d90ae2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dolebas_user_action
+    - node.type.dolebas_user_email
+  module:
+    - dolebas_user
+id: node.dolebas_user_email.field_dolebas_user_action
+field_name: field_dolebas_user_action
+entity_type: node
+bundle: dolebas_user_email
+label: 'Dolebas User Action'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: dolebas_user_field_type
