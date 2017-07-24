@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Contains dolebas_user.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_theme()
+ * @return mixed
+ */
+function dolebas_user_theme() {
+
+  $theme['dolebas_user_display_block'] = array(
+    'variables' => array(
+      'dolebas_user_email' => NULL,
+    ),
+    'template' => 'dolebas_user_display_block',
+  );
+
+  return $theme;
+
+}
