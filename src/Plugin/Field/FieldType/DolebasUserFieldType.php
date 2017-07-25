@@ -133,9 +133,12 @@ class DolebasUserFieldType extends FieldItemBase {
       $entity->delete();
     }
     
-    // Otherwise, add the email to the user if the user has no email registered
+    // Otherwise, check if an email is registrered on the user account
+    
+    // If the registered email is null or nr%@dolebas.com, add the email to the account
     $user = \Drupal\user\Entity\User::load($uid);
-    if ($user->get('mail')->value == null) {
+    $user_email = $user->get('mail')->value;
+    if ($user_email == null or preg_match('/@dolebas.com/',$user_email)) {
       $user->get('mail')->value = $dolebas_user_email;
       $user->save();
     };

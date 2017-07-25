@@ -28,6 +28,10 @@ class RedirectController extends ControllerBase {
     
     // Create new user
     
+    // $query = \Drupal::entityQuery('user')
+    // ->condition('mail', 'nr%@dolebas.com', 'LIKE');
+    // $nids = $query->execute();
+    
     // -- Generate random username and password
     $uuid_service = \Drupal::service('uuid');
     $uuid = $uuid_service->generate();
@@ -42,6 +46,11 @@ class RedirectController extends ControllerBase {
     $user->addRole('dolebas_unverified');
     $user->activate();
     $user->save();
+    $user_id = $user->id();
+    $user->setEmail('nr' . $user_id . '@dolebas.com');
+    $user->save();
+    
+    // -- Sign in the new user
     user_login_finalize($user);
     
     return new RedirectResponse('/'. $path); 
