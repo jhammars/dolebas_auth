@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - dolebas_user
+  theme:
+    - dolebas_subtheme
+id: dolebasuserdisplayblock
+theme: dolebas_subtheme
+region: navigation
+weight: 0
+provider: null
+plugin: dolebas_user_display_block
+settings:
+  id: dolebas_user_display_block
+  label: 'Dolebas User display block'
+  provider: dolebas
+  label_display: '0'
+visibility: {  }
