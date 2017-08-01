@@ -30,7 +30,7 @@ class RequireLoginSubscriber implements EventSubscriberInterface {
     // Set config values.
     \Drupal::service('config.factory')->getEditable('require_login.config')->setData(array(
         'deny_message' => '',
-        'excluded_paths' => '/dolebas_user/*',
+        'excluded_paths' => array('/dolebas_user/*', '/user/reset/*'),
         'auth_path' => '/dolebas_user'
     ))
     ->save();
@@ -43,7 +43,8 @@ class RequireLoginSubscriber implements EventSubscriberInterface {
     // Compare current URL with customizable excluded paths. Returns TRUE when
     // at least one excluded path matches the current page path. Also includes
     // custom configured user login path with exclusions.
-    $exclude_paths = explode(PHP_EOL, $config->get('excluded_paths'));
+
+    $exclude_paths = $config->get('excluded_paths');
     foreach ($exclude_paths as $key => $exclude_path) {
       if ($exclude_path == '<front>') {
         $front_path = \Drupal::service('path.alias_manager')->getAliasByPath($page_settings['front'], $lang);
