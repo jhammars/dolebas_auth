@@ -133,17 +133,28 @@ class DolebasUserFieldType extends FieldItemBase {
       $entity->delete();
     }
     
-    // Otherwise, check if an email is registrered on the user account
+    // Otherwise, check if the email belongs to another user
+    $query = \Drupal::entityQuery('user')
+    ->condition('mail', $dolebas_user_email);
+    $nids = $query->execute();
+    $email_exist_on_another_user = count($nids);
     
-    // If the registered email is null or nr%@dolebas.com, add the email to the account
-    $user = \Drupal\user\Entity\User::load($uid);
-    $user_email = $user->get('mail')->value;
-    if ($user_email == null or preg_match('/@dolebas.com/',$user_email)) {
-      $user->get('mail')->value = $dolebas_user_email;
-      $user->save();
-    };
+    if ($email_exist_on_another_user < 1) {
+      
+      // Check if any email is registrered on the user account
+      // If the registered email is null or nr%@dolebas.com, add the email to the account
+      $user = \Drupal\user\Entity\User::load($uid);
+      $user_email = $user->get('mail')->value;
+      
+      if ($user_email == null or preg_match('/@dolebas.com/',$user_email)) {
+        // This will currently overwrite existing emails, why??
+        // It will also add the same email to multiple accounts.
+        $user->get('mail')->value = $dolebas_user_email;
+        $user->save();
+      }
+      
+    }
     
   }
-
 
 }
