@@ -53,9 +53,7 @@ class RedirectController extends ControllerBase {
     // -- Sign in the new user
     user_login_finalize($user);
     
-    return new RedirectResponse('/'. $path); 
-    //return new RedirectResponse(URL::fromUserInput('/node')->toString());
-    // Url::fromInternalUri('node/add');
+    return new RedirectResponse('/user');
     
   }
 

@@ -1,5 +1,0 @@
-services:
-  dolebas_user.request_subscriber:
-    class: Drupal\dolebas_user\EventSubscriber\RequireLoginSubscriber
-    tags:
-      - {name: event_subscriber}

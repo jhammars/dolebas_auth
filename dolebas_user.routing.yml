@@ -1,5 +1,5 @@
 dolebas_user.auth_redirect:
-  path: '/dolebas_user/{path}'
+  path: '/user/login'
   defaults:
     _controller: '\Drupal\dolebas_user\Controller\RedirectController::auth_redirect'
     _title: 'Redirect'
