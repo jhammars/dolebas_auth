@@ -5,3 +5,12 @@ dolebas_user.auth_redirect:
     _title: 'Redirect'
   requirements:
     _permission: 'access content'
+
+dolebas_user.dolebas_login_url_form:
+  path: '/user/dolebas-login-url'
+  defaults:
+    _form: '\Drupal\dolebas_user\Form\DolebasLoginUrlForm'
+    _title: 'DolebasLoginUrlForm'
+  requirements:
+    _access: 'TRUE'
+  
