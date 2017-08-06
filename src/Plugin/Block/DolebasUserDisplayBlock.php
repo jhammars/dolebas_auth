@@ -23,10 +23,11 @@ class DolebasUserDisplayBlock extends BlockBase {
     $current_user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
     $current_user_email = $current_user->get('mail')->value;
     
-    // Pass along user email to the theme
+    // Attach library and pass along user email to the theme
     $build = [];
     $build['dolebas_user_display_block']['#theme'] = 'dolebas_user_display_block';
     $build['dolebas_user_display_block']['#dolebas_user_email'] = $current_user_email;
+    $build['dolebas_user_display_block']['#attached']['library'] = 'dolebas_user/dolebas-user-display-block';
     return $build;
   }
 

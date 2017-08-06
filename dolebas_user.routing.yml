@@ -10,7 +10,7 @@ dolebas_user.dolebas_login_url_form:
   path: '/user/dolebas-login-url'
   defaults:
     _form: '\Drupal\dolebas_user\Form\DolebasLoginUrlForm'
-    _title: 'DolebasLoginUrlForm'
+    _title: 'Sign in/up with you email'
   requirements:
     _access: 'TRUE'
   

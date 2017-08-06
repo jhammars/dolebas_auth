@@ -1,0 +1,5 @@
+dolebas-user-display-block:
+  header: true
+  js: {}
+  dependencies:
+    - core/drupal.ajax
