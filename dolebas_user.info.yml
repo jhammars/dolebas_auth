@@ -3,3 +3,5 @@ type: module
 description: Takes care of the user
 core: 8.x
 package: Dolebas
+dependencies:
+  - dolebas_config:dolebas_config
