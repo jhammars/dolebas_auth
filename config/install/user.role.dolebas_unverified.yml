@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - auto_login_url
   enforced:
     module:
       - dolebas_user
@@ -12,4 +14,5 @@ permissions:
   - 'access content'
   - 'use exclude node title'
   - 'create dolebas_transaction content'
+  - 'use auto login url'  
   

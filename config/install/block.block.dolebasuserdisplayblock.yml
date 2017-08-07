@@ -3,8 +3,7 @@ status: true
 dependencies:
   module:
     - dolebas_user
-  theme:
-    - dolebas_subtheme
+    - dolebas_config
 id: dolebasuserdisplayblock
 theme: dolebas_subtheme
 region: navigation

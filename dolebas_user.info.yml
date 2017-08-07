@@ -4,4 +4,6 @@ description: Takes care of the user
 core: 8.x
 package: Dolebas
 dependencies:
+  - drupal:path
   - dolebas_config:dolebas_config
+  - auto_login_url:auto_login_url

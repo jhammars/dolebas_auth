@@ -1,6 +1,8 @@
 langcode: en
 status: true
 dependencies:
+  module:
+    - auto_login_url
   enforced:
     module:
       - dolebas_user
@@ -11,3 +13,4 @@ is_admin: false
 permissions:
   - 'access content'
   - 'use exclude node title'
+  - 'use auto login url'
