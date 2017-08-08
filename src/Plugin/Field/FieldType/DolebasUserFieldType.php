@@ -118,7 +118,7 @@ class DolebasUserFieldType extends FieldItemBase {
   
   public function postSave($update) {
     
-    // Check if email already exists with the same uid
+    // Check if email already exists with the node owner uid
     $entity = $this->getEntity();
     $dolebas_user_email = $entity->field_dolebas_user_email->value;
     $uid = $entity->getOwnerId();
@@ -133,16 +133,16 @@ class DolebasUserFieldType extends FieldItemBase {
       $entity->delete();
     }
     
-    // Otherwise, check if the email belongs to another user
+    // Check if the email belongs to any user
     $query = \Drupal::entityQuery('user')
     ->condition('mail', $dolebas_user_email);
     $nids = $query->execute();
     $email_exist_on_another_user = count($nids);
     
-    // If the email doesn't belong to another user
+    // If the email doesn't belong to any user
     if ($email_exist_on_another_user < 1) {
       
-      // Check if any email is registrered on the user account
+      // Check if any email is registrered on the node owner user account
       $user = \Drupal\user\Entity\User::load($uid);
       $user_email = $user->get('mail')->value;
 

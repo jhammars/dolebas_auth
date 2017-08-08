@@ -28,6 +28,7 @@ class DolebasUserDisplayBlock extends BlockBase {
     $build['dolebas_user_display_block']['#theme'] = 'dolebas_user_display_block';
     $build['dolebas_user_display_block']['#dolebas_user_email'] = $current_user_email;
     $build['dolebas_user_display_block']['#attached']['library'] = 'dolebas_user/dolebas-user-display-block';
+    $build['dolebas_user_display_block']['#cache']['max-age'] = 0;
     return $build;
   }
 
