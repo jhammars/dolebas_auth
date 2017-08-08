@@ -72,15 +72,25 @@ class DolebasLoginUrlForm extends FormBase {
    */
   public function submissionMessageAjax(array &$form, FormStateInterface $form_state) {
 
+    // Add email to dolebas_user_email
+    $uuid = \Drupal::service('uuid')->generate();
+    $node = \Drupal\node\Entity\Node::create(array(
+        'type' => 'dolebas_user_email',
+        'uuid' => $uuid,
+        'title' => $uuid,
+        'field_dolebas_user_email' => $form_state->getValue('email'),
+        'field_dolebas_user_email_source' => 'DolebasLoginUrlForm'
+    ));
+    $node->save();
+
     // Get uid from email
     $query = \Drupal::entityQuery('user')
     ->condition('mail', $form_state->getValue('email'));
     $nids = $query->execute();
     $uid = reset($nids);
 
-    $previous_url = \Drupal::request()->server->get('HTTP_REFERER');
-
     // Generate auto login link
+    $previous_url = \Drupal::request()->server->get('HTTP_REFERER');
     $auto_login_link_destination = $previous_url;
     $host = \Drupal::request()->getSchemeAndHttpHost() . '/';
     $auto_login_url = $host . \Drupal::service('auto_login_url.create')->create($uid, $auto_login_link_destination);
@@ -91,7 +101,8 @@ class DolebasLoginUrlForm extends FormBase {
     $subject = 'Here are your login link';
     $body = "Use the link to sign in to your account: " . $auto_login_url;
     simple_mail_send($from, $to, $subject, $body);
-  
+
+    // Return message  
     $response = new AjaxResponse();
     $message = $this->t('A link should arrive in your mailbox in just a few seconds...');
     $response->addCommand(new HtmlCommand('.email-valid-message', $message));
