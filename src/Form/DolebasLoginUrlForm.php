@@ -72,7 +72,6 @@ class DolebasLoginUrlForm extends FormBase {
    */
   public function submissionMessageAjax(array &$form, FormStateInterface $form_state) {
 
-    
     // Get current user mail
     $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
     $current_user_email = $user->get('mail')->value;
@@ -88,14 +87,17 @@ class DolebasLoginUrlForm extends FormBase {
           'field_dolebas_user_email_source' => 'DolebasLoginUrlForm'
       ));
       $node->save();
+      
     // Otherwise, create a new user
     } else {
-      // -- Generate random username and password
+
+      // Generate random username and password
       $uuid_service = \Drupal::service('uuid');
       $uuid = $uuid_service->generate();
       $username = $uuid;
       $pass = user_password();
-      // -- Create new user
+
+      // Create new user
       $user = \Drupal\user\Entity\User::create();
       $user->setPassword($pass);
       $user->enforceIsNew();

@@ -11,34 +11,17 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class RedirectController extends ControllerBase {
 
   /**
-   * If the current user is not anonymous, redirect to previous page.
-   * If the current user is anonymous, create a new user, sign in and redirect to $path
-   *
+   * Create a new user and redirect to path
    */
   public function auth_redirect($path = '') {
-    
-    // Temporary solution to prevent infinity redirection after auth user sign out
-    // Makes anonymous access really slow
-    // drupal_flush_all_caches();
-    
-    // If current user is not anonymous, redirect to previous page
-    //$previous_url= \Drupal::request()->server->get('HTTP_REFERER');
-    
-    // If current user is anonymous, create a new user and redirect to path in url
-    
-    // Create new user
-    
-    // $query = \Drupal::entityQuery('user')
-    // ->condition('mail', 'nr%@dolebas.com', 'LIKE');
-    // $nids = $query->execute();
-    
-    // -- Generate random username and password
+
+    // Generate random username and password
     $uuid_service = \Drupal::service('uuid');
     $uuid = $uuid_service->generate();
     $username = $uuid;
     $pass = user_password();
 
-    // -- Create new user
+    // Create new user
     $user = \Drupal\user\Entity\User::create();
     $user->setPassword($pass);
     $user->enforceIsNew();
@@ -50,9 +33,10 @@ class RedirectController extends ControllerBase {
     $user->setEmail('nr' . $user_id . '@dolebas.com');
     $user->save();
     
-    // -- Sign in the new user
+    // Sign in the new user
     user_login_finalize($user);
     
+    // Redirect to path
     return new RedirectResponse('/user');
     
   }

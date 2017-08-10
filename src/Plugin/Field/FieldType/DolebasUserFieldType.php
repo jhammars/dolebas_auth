@@ -116,6 +116,9 @@ class DolebasUserFieldType extends FieldItemBase {
     return $elements;
   }
   
+  /**
+   * Take action depending on node field content
+   */  
   public function postSave($update) {
     
     // Check if email already exists with the node owner uid
@@ -151,9 +154,6 @@ class DolebasUserFieldType extends FieldItemBase {
         $user->get('mail')->value = $dolebas_user_email;
         $user->save();
       }
-      
     }
-    
   }
-
 }
