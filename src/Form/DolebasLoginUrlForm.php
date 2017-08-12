@@ -27,16 +27,30 @@ class DolebasLoginUrlForm extends FormBase {
 
     $form['#prefix'] = '<div id="my-form-wrapper-id">';
     $form['#suffix'] = '</div>';
+
+    // Load the current user.
+    $current_user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+    $current_user_email = $current_user->get('mail')->value;
+    
+    // If the current user email is null or nr%@dolebas.com, display no field title
+    if ($current_user_email == null or preg_match('/@dolebas.com/',$current_user_email)) {
+      $email_field_title = NULL;
+      
+    // Otherwise, display the following field title
+    } else {
+      $email_field_title = 'Currently signed in as ' . $current_user_email;
+    }
     
     $form['email'] = [
       '#type' => 'email',
       '#maxlength' => 512,
       '#size' => 64,
+      '#title' => $email_field_title,
     ];
     
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Send login link to my email'),
+      '#value' => $this->t('Send login link'),
       '#attributes' => [
           'class' => [
               'btn',
@@ -51,6 +65,7 @@ class DolebasLoginUrlForm extends FormBase {
       ],
       '#suffix' => '<span class="email-valid-message"></span>'      
     ];
+    $form['#cache']['max-age'] = 0;
 
     return $form;
   }
@@ -129,7 +144,7 @@ class DolebasLoginUrlForm extends FormBase {
 
     // Return message  
     $response = new AjaxResponse();
-    $message = $this->t('A link should arrive in your mailbox in just a few seconds...');
+    $message = $this->t('Check your email!');
     $response->addCommand(new HtmlCommand('.email-valid-message', $message));
     return $response;
   }
