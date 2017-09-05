@@ -1,0 +1,8 @@
+.dolebas-user-display-block {
+    display:inline-block;
+}
+.dolebas-user-email {
+    position: absolute;
+    right: 5px;
+    transform: translate(-50%, -66%);  
+}

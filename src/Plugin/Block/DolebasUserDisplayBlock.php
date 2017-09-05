@@ -24,11 +24,11 @@ class DolebasUserDisplayBlock extends BlockBase {
     $current_user_email = $current_user->get('mail')->value;
     
     // Attach library and pass along user email to the theme
-    $build = [];
-    $build['dolebas_user_display_block']['#theme'] = 'dolebas_user_display_block';
-    $build['dolebas_user_display_block']['#dolebas_user_email'] = $current_user_email;
-    $build['dolebas_user_display_block']['#attached']['library'] = 'dolebas_user/dolebas-user-display-block';
-    $build['dolebas_user_display_block']['#cache']['max-age'] = 0;
+    $build['#theme'] = 'dolebas_user_display_block';
+    $build['#dolebas_user_email'] = $current_user_email;
+    $build['#attached']['library'] = 'dolebas_user/dolebas-user-display-block';
+    $build['#cache']['max-age'] = 0;
+
     return $build;
   }
 
